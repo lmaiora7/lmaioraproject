@@ -7,27 +7,21 @@
  */
 public class Follower
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Follower
-     */
-    public Follower()
+    private Point currentTarget;
+    private ObjectMap currentMap;
+    private Point loc;
+    public Follower(int xint,int yint,ObjectMap o)
     {
-        // initialise instance variables
-        x = 0;
+        loc=new Point(xint,yint);
+        currentMap=o;
     }
-
+    
+    public void setTarget(int xx, int yy){currentTarget=new Point(xx,yy);}
+    
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * This method updates the follower, by consectutively calling this it will move to its objective
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public void update(){
+        
     }
 }
