@@ -7,27 +7,17 @@
  */
 public class Object
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Object
-     */
-    public Object()
+    private Point loc;
+    private int length;
+    private int height;
+    
+    public Object(int xx,int yy,int len,int hei)
     {
-        // initialise instance variables
-        x = 0;
+        loc.xset(xx);
+        loc.yset(yy);
+        length=len;
+        height=hei;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    
 }
