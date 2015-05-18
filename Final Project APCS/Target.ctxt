@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=xx\ yy\ len\ hei
-comment0.target=Object(int,\ int,\ int,\ int)
+comment0.params=xx\ yy
+comment0.target=Target(int,\ int)
 comment1.params=
 comment1.target=void\ draw()
 numComments=2

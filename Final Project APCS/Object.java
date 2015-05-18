@@ -25,4 +25,8 @@ public class Object
         pt3=new Point(xx-5,yy+height+5);
         pt4=new Point(xx+length+5,yy+height+5);
     }
+    
+    public void draw(){
+        
+    }
 }

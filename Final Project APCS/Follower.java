@@ -28,7 +28,7 @@ public class Follower
      * This method scans whats the next step to getting to the finalTarget by making a new currentTarget
      */
     public void findNextTarget(){
-        //needs to be added
+        //needs to be added, uses currentMap to scan the area and decide the best solution.
     }
     
     /**
@@ -68,5 +68,12 @@ public class Follower
                 }
             }
         }
+    }
+    
+    /**
+     * This method draws the follower to the screen
+     */
+    public void draw(){
+        
     }
 }
