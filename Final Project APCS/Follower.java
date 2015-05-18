@@ -1,16 +1,18 @@
 
 /**
- * Write a description of class Follower here.
+ * This follower class creates a follower that wil actively follow a target. It uses a object map to decide where to
+ * go next and how to get there.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Luke Maiorano 
+ * @version 1.0
  */
 public class Follower
 {
-    private ObjectMap currentMap;
-    private Point currentTarget=null;
-    private Point finalTarget;
-    private Point loc;
+    private ObjectMap currentMap;//the map in which it uses to decide its path
+    private Point currentTarget=null;//the temporary target used to ultimately get to the finalTarget
+    private Target finalTarget;
+    private Point loc;//current location
+    //these both are used to decide the angle of travel
     private double m;
     private double b;
     public Follower(int xint,int yint,ObjectMap o)
@@ -22,7 +24,8 @@ public class Follower
     /**
      * This method changes the main target manually
      */
-    public void setTarget(int xx, int yy){finalTarget=new Point(xx,yy);}
+    public void setTarget(int xx, int yy){finalTarget=new Target(xx,yy);}
+    public void setTarget(Target tt){finalTarget=tt;}
     
     /**
      * This method scans whats the next step to getting to the finalTarget by making a new currentTarget
@@ -43,7 +46,7 @@ public class Follower
      * This method updates the follower, by consectutively calling this it will move to its objective
      */
     public void update(){
-        if(currentTarget==null || loc.distance(finalTarget)<5){
+        if(currentTarget==null || loc.distance(finalTarget.getPoint())<5){
             //do nothing due to having no target or are currently at the final destination
         }
         else if(loc.distance(currentTarget)<5){

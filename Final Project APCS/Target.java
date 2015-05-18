@@ -13,6 +13,9 @@ public class Target
         loc.xset(xx);
         loc.yset(yy);
     }
+    public Point getPoint(){
+        return loc;
+    }
     public void draw(){
         
     }
