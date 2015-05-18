@@ -28,7 +28,11 @@ public class Follower
     public void setTarget(Target tt){finalTarget=tt;}
     
     /**
-     * This method scans whats the next step to getting to the finalTarget by making a new currentTarget
+     * This method scans whats the next step to getting to the finalTarget by making a new currentTarget.
+     * The method begins by making a rough step by step process of getting to final target, from there it looks for
+     * any of the points its marked that it can use to cut corners and arrive more efficiently. If no efficient 
+     * travel method is found it will just use the original solution it created. If no possible way of arriving
+     * at the final target is possible then it will set finalTarget to null and currentTarget to null as well.
      */
     public void findNextTarget(){
         //needs to be added, uses currentMap to scan the area and decide the best solution.
