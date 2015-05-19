@@ -6,6 +6,7 @@
  * @author Luke Maiorano 
  * @version 1.0
  */
+import java.util.ArrayList;
 public class Follower
 {
     private ObjectMap currentMap;//the map in which it uses to decide its path
@@ -36,6 +37,7 @@ public class Follower
      */
     public void findNextTarget(){
         //needs to be added, uses currentMap to scan the area and decide the best solution.
+        ArrayList<Point> trackPoints=new ArrayList<Point>();
     }
     
     /**
@@ -44,6 +46,30 @@ public class Follower
     public void findNextDirection(){
         m=(currentTarget.ycord()-loc.ycord())/(currentTarget.xcord()-loc.xcord());
         b=loc.ycord()/(loc.xcord()*m);
+    }
+    
+    /**
+     * This method uses the followers current location and the given parameters to figure out if there is a direct
+     * path between the two. The collision it checks is the ObjectMap initialized under currentMap.
+     */
+    private boolean checkCollision(int xx,int yy){
+        boolean tf=false;
+        int tempx=xx,tempy=yy,tempm=((yy-loc.ycord())/(xx-loc.xcord())),tempb=tempy/(tempm*tempx);
+        while(tempx!=loc.xcord()){
+            if(tf=true)
+                tempx=loc.xcord();
+            else if(tempx>loc.xcord()){
+                tempx--;
+                tempy=tempx*tempm+tempb;
+                tf=currentMap.isInside(tempx,tempy);
+            }
+            else if(tempx<loc.xcord()){
+                tempx++;
+                tempy=tempx*tempm+tempb;
+                tf=currentMap.isInside(tempx,tempy);
+            }
+        }
+        return tf;
     }
     
     /**

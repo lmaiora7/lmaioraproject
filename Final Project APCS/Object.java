@@ -26,6 +26,10 @@ public class Object
         pt4=new Point(xx+length+5,yy+height+5);
     }
     
+    public int getx(){return loc.xcord();}
+    public int gety(){return loc.ycord();}
+    public int getLength(){return length;}
+    public int getHeight(){return height;}
     public void draw(){
         
     }
