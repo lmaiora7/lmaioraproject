@@ -25,12 +25,50 @@ public class Object
         pt3=new Point(xx-5,yy+height+5);
         pt4=new Point(xx+length+5,yy+height+5);
     }
+
+    public boolean pointInside(Point p){
+        boolean tf=false;
+        if((p.xcord()>loc.xcord()&&p.xcord()<loc.xcord()+length)&&(p.ycord()>loc.ycord()&&p.ycord()<loc.ycord()+height)){
+            tf=true;
+        }
+        return tf;
+    }
+
+    public Point closest(Point p){
+        Point result=pt1;
+        if(p.distance(pt2)<p.distance(result))
+            result=pt2;
+        else if(p.distance(pt3)<p.distance(result))
+            result=pt3;
+        else if(p.distance(pt4)<p.distance(result))
+            result=pt4;
+        return result;
+    }
     
+    public Point rotate(Point p){
+        Point result;
+        if(p==pt1)
+            result=pt2;
+        else if(p==pt2)
+            result=pt4;
+        else if(p==pt3)
+            result=pt1;
+        else if(p==pt4)
+            result=pt3;
+        else
+            result=null;
+        return result;
+    }
+
     public int getx(){return loc.xcord();}
+
     public int gety(){return loc.ycord();}
+
     public int getLength(){return length;}
+
     public int getHeight(){return height;}
+
     public void draw(){
-        
+
     }
 }
