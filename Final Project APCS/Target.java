@@ -13,6 +13,7 @@ public class Target
         loc.xset(xx);
         loc.yset(yy);
     }
+    public Target(Point tt){loc=tt;}
     public Point getPoint(){
         return loc;
     }

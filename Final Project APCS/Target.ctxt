@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.params=xx\ yy
 comment0.target=Target(int,\ int)
-comment1.params=
-comment1.target=Point\ getPoint()
+comment1.params=tt
+comment1.target=Target(Point)
 comment2.params=
-comment2.target=void\ draw()
-numComments=3
+comment2.target=Point\ getPoint()
+comment3.params=
+comment3.target=void\ draw()
+numComments=4
