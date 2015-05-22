@@ -7,7 +7,7 @@
  */
 public class Object
 {
-    private Point loc;
+    private Point loc= new Point(0,0);
     private int length;
     private int height;
     private Point pt1,pt2,pt3,pt4; //These points are for the follower to track and help them find a path
@@ -28,7 +28,7 @@ public class Object
 
     public boolean pointInside(Point p){
         boolean tf=false;
-        if((p.xcord()>loc.xcord()&&p.xcord()<loc.xcord()+length)&&(p.ycord()>loc.ycord()&&p.ycord()<loc.ycord()+height)){
+        if((p.xcord()>=loc.xcord()&&p.xcord()<=loc.xcord()+length)&&(p.ycord()>=loc.ycord()&&p.ycord()<=loc.ycord()+height)){
             tf=true;
         }
         return tf;

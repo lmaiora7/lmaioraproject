@@ -23,4 +23,5 @@ public class Point
     public int distance(Point p){
         return (int)Math.sqrt((x-p.xcord())+(y-p.ycord()));
     }
+    
 }

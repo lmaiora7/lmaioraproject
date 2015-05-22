@@ -14,7 +14,7 @@ public class Follower
     private Target finalTarget;
     private ArrayList<Point> tracer;
     private int tracerInc;
-    private boolean targetChange=false;
+    private boolean targetChange=true;
     private Point loc;//current location
     //these both are used to decide the angle of travel
     private double m;
@@ -24,20 +24,19 @@ public class Follower
         loc=new Point(xint,yint);
         currentMap=o;
     }
-    public Follower(int xint,int yint,Point tt,ObjectMap o)
+    public Follower(int xint,int yint,Target tt,ObjectMap o)
     {
         loc=new Point(xint,yint);
-        finalTarget=new Target(tt);
+        finalTarget=tt;
         currentMap=o;
     }
-
+    public Point getLocation(){return loc;}
+    public void setTracerTemporary(ArrayList<Point> p){tracer=p;}//for testing purposes only
     /**
      * This method changes the main target manually
      */
     public void setTarget(int xx, int yy){finalTarget=new Target(xx,yy);targetChange=true;}
-
     public void setTarget(Target tt){finalTarget=tt;targetChange=true;}
-
     /**
      * This method scans whats the next step to getting to the finalTarget by making a new currentTarget.
      * The method begins by making a rough step by step process of getting to final target, from there it looks for
@@ -47,7 +46,7 @@ public class Follower
      * 
      * UPDATE this now creates a arrayList that stores the set of point for it to follow
      */
-    public void findNextTarget(){
+    private void findNextTarget(){
         ArrayList<Point> trackPoints=new ArrayList<Point>();
         Point temp=loc;
         Point ir=finalTarget.getPoint();
@@ -56,7 +55,7 @@ public class Follower
         while(temp.distance(finalTarget.getPoint())>5){//it's possible that the value 5, is too specific!
             tempm=(ir.ycord()-temp.ycord())/(ir.xcord()-temp.xcord());
             tempb=temp.ycord()/(temp.xcord()*tempm);
-            if(temp.distance(ir)>5 && currentMap.isInside(temp.xcord(),temp.ycord())==true){
+            if(temp.distance(ir)>5 && currentMap.isInside(temp.xcord(),temp.ycord())==false){
                 if(ir.xcord()>temp.xcord()){
                     temp.xadd(1);
                     temp.yset((int)(tempm*temp.xcord()+tempb));
@@ -78,8 +77,14 @@ public class Follower
                 if(currentMap.isInside(temp.xcord(),temp.ycord())){
                     o=currentMap.inObject(temp.xcord(),temp.ycord());
                 }
+                if(o==null){
+                    currentMap.getClosestObject(temp);
+                }
                 trackPoints.add(o.closest(temp));
-                if(checkCollisionTarget(temp.xcord(),temp.ycord())){
+                if(ir!=o.closest(temp)){
+                    ir=o.closest(temp);
+                }
+                if(checkCollisionTarget(temp.xcord(),temp.ycord())==false){
                     ir=finalTarget.getPoint();
                 }
                 else if(o.rotate(ir).distance(finalTarget.getPoint())<ir.distance(finalTarget.getPoint())){
@@ -106,7 +111,7 @@ public class Follower
     /**
      * This method takes the currentTarget and loc to create a equation for getting to the currentTarget
      */
-    public void findNextDirection(){
+    private void findNextDirection(){
         m=(currentTarget.ycord()-loc.ycord())/(currentTarget.xcord()-loc.xcord());
         b=loc.ycord()/(loc.xcord()*m);
     }
@@ -160,7 +165,7 @@ public class Follower
      */
     public void update(){
         if(targetChange==true){
-            findNextTarget();
+            //findNextTarget();
             tracerInc=0;
             targetChange=false;
         }

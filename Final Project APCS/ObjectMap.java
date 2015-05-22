@@ -40,6 +40,16 @@ public class ObjectMap
         return result;
     }
     
+    public Object getClosestObject(Point p){
+        Object result=objectList.get(0);
+        for(int c=1;c<objectList.size();c++){
+            if(objectList.get(c).closest(p).distance(p)<result.closest(p).distance(p)){
+                
+            }
+        }
+        return result;
+    }
+    
     public void draw(){
         for(int c=0;c<objectList.size();c++){
             objectList.get(c).draw();

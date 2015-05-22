@@ -7,7 +7,7 @@
  */
 public class Target
 {
-    private Point loc;
+    private Point loc= new Point(0,0);
     public Target(int xx,int yy)
     {
         loc.xset(xx);
