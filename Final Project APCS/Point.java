@@ -21,7 +21,7 @@ public class Point
     public void xadd(int xx){x+=xx;}
     public void yadd(int yy){y+=yy;}
     public int distance(Point p){
-        return (int)Math.sqrt((x-p.xcord())+(y-p.ycord()));
+        return (int)Math.sqrt(Math.pow((x-p.xcord()),2)+Math.pow((y-p.ycord()),2));
     }
     
 }

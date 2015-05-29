@@ -71,4 +71,8 @@ public class Object
     public void draw(){
 
     }
+    
+    public String toString(){
+        return "[Object is at X:"+loc.xcord()+"|Y:"+loc.ycord()+" and its Length:"+length+"|Height:"+height+"]";
+    }
 }

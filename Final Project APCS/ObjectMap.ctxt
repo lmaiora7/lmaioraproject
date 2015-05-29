@@ -11,4 +11,6 @@ comment4.params=p
 comment4.target=Object\ getClosestObject(Point)
 comment5.params=
 comment5.target=void\ draw()
-numComments=6
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

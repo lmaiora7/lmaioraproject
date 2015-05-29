@@ -44,7 +44,7 @@ public class ObjectMap
         Object result=objectList.get(0);
         for(int c=1;c<objectList.size();c++){
             if(objectList.get(c).closest(p).distance(p)<result.closest(p).distance(p)){
-                
+                result=objectList.get(c);
             }
         }
         return result;
@@ -54,5 +54,14 @@ public class ObjectMap
         for(int c=0;c<objectList.size();c++){
             objectList.get(c).draw();
         }
+    }
+    
+    public String toString(){
+        String result="{List of Objects present in this Map";
+        for(int c=0;c<objectList.size();c++){
+            result+="\n"+objectList.get(c);
+        }
+        result+="}";
+        return result;
     }
 }

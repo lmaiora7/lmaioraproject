@@ -46,13 +46,14 @@ public class Follower
      * 
      * UPDATE this now creates a arrayList that stores the set of point for it to follow
      */
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>THIS METHOD DOES NOT WORK AS INTENDED, or at all I think<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     private void findNextTarget(){
         ArrayList<Point> trackPoints=new ArrayList<Point>();
         Point temp=loc;
         Point ir=finalTarget.getPoint();
-        int tempm,tempb;
+        double tempm,tempb;
         Object o=null;
-        while(temp.distance(finalTarget.getPoint())>5){//it's possible that the value 5, is too specific!
+        while(temp.distance(finalTarget.getPoint())>10){//it's possible that the value 5, is too specific!
             tempm=(ir.ycord()-temp.ycord())/(ir.xcord()-temp.xcord());
             tempb=temp.ycord()/(temp.xcord()*tempm);
             if(temp.distance(ir)>5 && currentMap.isInside(temp.xcord(),temp.ycord())==false){
@@ -98,6 +99,10 @@ public class Follower
         tracer=trackPoints;
     }
 
+    /**
+     * This method will use the list of target to follow and find the next one on the list and return the next target in order to get
+     * to the final target, findNextTarget() must run before this one.
+     */
     private Point nextTarget(){
         int result=-1;
         for(int c=tracer.size()-1;c>=0;c--){
@@ -140,6 +145,10 @@ public class Follower
         return tf;
     }
 
+    /**
+     * This method uses the finalTarget's current location and the given parameters to figure out if there is a direct
+     * path between the two. The collision it checks is the ObjectMap initialized under currentMap.
+     */
     private boolean checkCollisionTarget(int xx,int yy){
         boolean tf=false;
         int tempx=xx,tempy=yy,tempm=((yy-finalTarget.getPoint().ycord())/(xx-finalTarget.getPoint().xcord())),tempb=tempy/(tempm*tempx);
@@ -161,11 +170,11 @@ public class Follower
     }
 
     /**
-     * This method updates the follower, by consectutively calling this it will move to its objective
+     * This method updates the follower, by consectutively calling this it will move to its objective by itself
      */
     public void update(){
         if(targetChange==true){
-            //findNextTarget();
+            findNextTarget();
             tracerInc=0;
             targetChange=false;
         }
@@ -196,6 +205,10 @@ public class Follower
                 }
             }
         }
+    }
+    
+    public String toString(){
+        return "X-Cord: "+loc.xcord()+" | Y-Cord: "+loc.ycord();
     }
 
     /**
